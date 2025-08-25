@@ -4,7 +4,7 @@ const Vocabulary = require("../models/Vocabulary");
 const getVocabulary = async (req, res) => {
   try {
     const words = await Vocabulary.find();
-    console.log("Fetched data:", data);
+    console.log("Fetched data:", words); // ✅ correct variable
     res.json(words);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -38,7 +38,7 @@ const updateVocabulary = async (req, res) => {
     const updated = await Vocabulary.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true } // return the updated document
+      { new: true } // ✅ returns the updated document
     );
     if (!updated) {
       return res.status(404).json({ message: "Word not found" });
@@ -49,5 +49,4 @@ const updateVocabulary = async (req, res) => {
   }
 };
 
-
-module.exports = { getVocabulary, addVocabulary, deleteVocabulary,updateVocabulary };
+module.exports = { getVocabulary, addVocabulary, deleteVocabulary, updateVocabulary };
