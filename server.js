@@ -8,7 +8,7 @@ connectDB();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: ["https://infinitepreparation.netlify.app"] }));
+app.use(cors());
 
 // Routes
 app.use("/api/vocabulary", require("./routes/vocabularyRoutes"));
